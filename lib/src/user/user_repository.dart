@@ -16,7 +16,7 @@ class UserRepository {
       'username': username,
       'password': password,
     });
-    final response = await dio.post("$BASE_URL/login", data: formData);
+    final response = await dio.post("$baseUrl/login", data: formData);
     print(response.data);
     return null;
   }
