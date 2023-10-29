@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:kirgu_employee/src/constants.dart';
 import 'package:kirgu_employee/src/wta_event/wta_event.dart';
 import 'package:kirgu_employee/src/wta_event/wta_event_provider.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EventListView extends StatelessWidget {
   const EventListView({super.key});
@@ -79,10 +81,13 @@ class _WtaEventsCalendarState extends State<WtaEventsCalendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.appTitle),
+      ),
       body: Column(
         children: [
           TableCalendar<WtaEvent>(
-            locale: "ru_RU",
+            locale: AppLocalizations.of(context)!.localeName,
             focusedDay: _focusedDay,
             firstDay: DateTime(_focusedDay.year, _focusedDay.month, 1),
             lastDay: DateTime(_focusedDay.year, _focusedDay.month + 1, 0),

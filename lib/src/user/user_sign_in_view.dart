@@ -38,12 +38,15 @@ class _SignInViewState extends State<SignInView> {
                 TextField(
                   controller: passwordController,
                 ),
+                const SizedBox(
+                  height: 8.0,
+                ),
                 ElevatedButton(
                   onPressed: () async {
                     await ref.read(userRepositoryProvider.notifier).signIn(
                         usernameController.text, passwordController.text);
                     if (context.mounted) {
-                      Navigator.of(context).push(
+                      Navigator.of(context).pushReplacement(
                         MaterialPageRoute<void>(
                           builder: (BuildContext context) =>
                               const EventListView(),
