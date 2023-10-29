@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:kirgu_employee/src/user/user_controller.dart';
+import 'package:kirgu_employee/src/user/user_sign_in_view.dart';
 import 'package:kirgu_employee/src/wta_event/wta_event_list.dart';
 
-import 'sample_feature/sample_item_details_view.dart';
-import 'sample_feature/sample_item_list_view.dart';
 import 'settings/settings_controller.dart';
 import 'settings/settings_view.dart';
 
@@ -14,11 +12,9 @@ class MyApp extends StatelessWidget {
   const MyApp({
     super.key,
     required this.settingsController,
-    required this.userController,
   });
 
   final SettingsController settingsController;
-  final UserController userController;
 
   @override
   Widget build(BuildContext context) {
@@ -73,14 +69,12 @@ class MyApp extends StatelessWidget {
                 switch (routeSettings.name) {
                   case SettingsView.routeName:
                     return SettingsView(controller: settingsController);
-                  case SampleItemDetailsView.routeName:
-                    return const SampleItemDetailsView();
-                  case SampleItemListView.routeName:
-                    return const SampleItemListView();
-                  // case WtaEventsCalendar.routeName:
-                  // return const WtaEventsCalendar();
-                  default:
+                  case SignInView.routeName:
+                    return const SignInView();
+                  case EventListView.routeName:
                     return const EventListView();
+                  default:
+                    return const SignInView();
                 }
               },
             );

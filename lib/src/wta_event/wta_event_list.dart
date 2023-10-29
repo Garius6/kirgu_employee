@@ -8,6 +8,8 @@ import 'package:table_calendar/table_calendar.dart';
 class EventListView extends StatelessWidget {
   const EventListView({super.key});
 
+  static const routeName = "/events";
+
   @override
   Widget build(BuildContext context) {
     return Consumer(
@@ -33,7 +35,6 @@ class WtaEventsCalendar extends StatefulWidget {
   const WtaEventsCalendar({super.key, required this.events});
 
   final List<WtaEvent> events;
-  static const routeName = "/events";
 
   @override
   State<WtaEventsCalendar> createState() => _WtaEventsCalendarState();

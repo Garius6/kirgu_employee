@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:kirgu_employee/src/user/user_controller.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kirgu_employee/src/user/user_provider.dart';
+import 'package:kirgu_employee/src/wta_event/wta_event_list.dart';
 
-class UserSignIn extends StatefulWidget {
-  const UserSignIn({super.key, required this.userController});
+class SignInView extends StatefulWidget {
+  const SignInView({super.key});
 
   static const routeName = "/sign_in";
 
-  final UserController userController;
-
   @override
-  State<UserSignIn> createState() => _UserSignInState();
+  State<SignInView> createState() => _SignInViewState();
 }
 
-class _UserSignInState extends State<UserSignIn> {
+class _SignInViewState extends State<SignInView> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -25,27 +25,39 @@ class _UserSignInState extends State<UserSignIn> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: usernameController,
+    return Consumer(
+      builder: (context, ref, child) {
+        return Scaffold(
+          body: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              children: [
+                TextField(
+                  controller: usernameController,
+                ),
+                TextField(
+                  controller: passwordController,
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    await ref.read(userRepositoryProvider.notifier).signIn(
+                        usernameController.text, passwordController.text);
+                    if (context.mounted) {
+                      Navigator.of(context).push(
+                        MaterialPageRoute<void>(
+                          builder: (BuildContext context) =>
+                              const EventListView(),
+                        ),
+                      );
+                    }
+                  },
+                  child: const Text("sign in"),
+                )
+              ],
             ),
-            TextField(
-              controller: passwordController,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                widget.userController
-                    .signIn(usernameController.text, passwordController.text);
-              },
-              child: const Text("sign in"),
-            )
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }
