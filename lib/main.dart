@@ -1,12 +1,13 @@
+import 'dart:developer' as developer;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:intl/date_symbol_data_local.dart';
+import 'package:kirgu_employee/src/user/token.dart';
 import 'package:kirgu_employee/src/user/user_provider.dart';
 
 import 'src/app.dart';
 import 'src/settings/settings_controller.dart';
 import 'src/settings/settings_service.dart';
-import 'dart:developer' as developer;
 
 class MainProviderObserver extends ProviderObserver {
   @override
@@ -76,6 +77,7 @@ class _EagerInitialization extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    ref.watch(tokenProvider);
     ref.watch(userRepositoryProvider);
     return child;
   }

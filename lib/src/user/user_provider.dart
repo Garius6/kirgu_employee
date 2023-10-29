@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:jaguar_jwt/jaguar_jwt.dart';
 import 'package:kirgu_employee/src/constants.dart';
+import 'package:kirgu_employee/src/user/token.dart';
 import 'package:kirgu_employee/src/user/user.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -31,9 +32,10 @@ class UserRepository extends _$UserRepository {
     final dio = Dio(BaseOptions(responseType: ResponseType.plain));
     final response = await dio.post("$baseUrl/login", data: formData);
     final tokenJson = jsonDecode(response.data);
+    ref.read(tokenProvider.notifier).setToken(tokenJson["access_token"]);
     var parts = tokenJson["access_token"].split('.');
     var decoded = B64urlEncRfc7515.decodeUtf8(parts[1]);
-    var tokenSub = jsonDecode(decoded)["sub"];
-    return User(tokenSub["username"], tokenSub["id"]);
+    var decodedJson = jsonDecode(decoded);
+    return User(decodedJson["sub"], decodedJson["id"]);
   }
 }

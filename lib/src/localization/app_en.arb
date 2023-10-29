@@ -2,5 +2,6 @@
   "appTitle": "Kirgu employee",
   "@appTitle": {
     "description": "The title of the application"
-  }
+  },
+  "signIn": "Sign in"
 }

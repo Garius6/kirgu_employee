@@ -6,12 +6,9 @@ part of 'wta_event_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$wtaEventListHash() => r'3fbe7cf9a9a86cda7ac0e5ebd635629b2b3a08b8';
+String _$wtaEventListHash() => r'b6f918ec2de15065ad64cf710d0c7f85810b5a70';
 
-/// This will create a provider named `wtaEventListProvider`
-/// which will cache the result of this function.
-///
-/// Copied from [wtaEventList].
+/// See also [wtaEventList].
 @ProviderFor(wtaEventList)
 final wtaEventListProvider = AutoDisposeFutureProvider<List<WtaEvent>>.internal(
   wtaEventList,

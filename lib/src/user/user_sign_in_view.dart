@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:kirgu_employee/src/user/user_provider.dart';
 import 'package:kirgu_employee/src/wta_event/wta_event_list.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SignInView extends StatefulWidget {
   const SignInView({super.key});
@@ -29,8 +30,9 @@ class _SignInViewState extends State<SignInView> {
       builder: (context, ref, child) {
         return Scaffold(
           body: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(16.0),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextField(
                   controller: usernameController,
@@ -54,7 +56,7 @@ class _SignInViewState extends State<SignInView> {
                       );
                     }
                   },
-                  child: const Text("sign in"),
+                  child: Text(AppLocalizations.of(context)!.signIn),
                 )
               ],
             ),
