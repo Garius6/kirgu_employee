@@ -24,6 +24,13 @@ class UserRepository extends _$UserRepository {
     });
   }
 
+  Future<void> signOut() async {
+    state = const AsyncValue.loading();
+
+    ref.read(tokenProvider.notifier).setToken("");
+    state = const AsyncValue.data(null);
+  }
+
   Future<User> _fetchUser(String username, String password) async {
     final formData = FormData.fromMap({
       'username': username,

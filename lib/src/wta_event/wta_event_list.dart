@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:kirgu_employee/src/settings/settings_view.dart';
 import 'package:kirgu_employee/src/wta_event/wta_event.dart';
 import 'package:kirgu_employee/src/wta_event/wta_event_provider.dart';
 import 'package:table_calendar/table_calendar.dart';
@@ -82,6 +83,13 @@ class _WtaEventsCalendarState extends State<WtaEventsCalendar> {
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.appTitle),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(SettingsView.routeName);
+              },
+              icon: const Icon(Icons.settings))
+        ],
       ),
       body: Column(
         children: [
