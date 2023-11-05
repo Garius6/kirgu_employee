@@ -36,9 +36,21 @@ class _SignInViewState extends State<SignInView> {
               children: [
                 TextField(
                   controller: usernameController,
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    labelText: AppLocalizations.of(context)!.login,
+                  ),
+                ),
+                const SizedBox(
+                  height: 8.0,
                 ),
                 TextField(
                   controller: passwordController,
+                  decoration: InputDecoration(
+                    border: const OutlineInputBorder(),
+                    labelText: AppLocalizations.of(context)!.password,
+                  ),
+                  obscureText: true,
                 ),
                 const SizedBox(
                   height: 8.0,

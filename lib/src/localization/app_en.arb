@@ -3,5 +3,7 @@
   "@appTitle": {
     "description": "The title of the application"
   },
-  "signIn": "Sign in"
+  "signIn": "Sign in",
+  "login": "Login",
+  "password": "Password"
 }

@@ -3,5 +3,7 @@
     "@appTitle": {
         "description": "Заголовок приложения"
     },
-    "signIn": "Войти"
+    "signIn": "Войти",
+    "login": "Логин",
+    "password": "Пароль"
 }
